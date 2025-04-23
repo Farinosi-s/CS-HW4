@@ -16,7 +16,7 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "C:\\msys64\\ucrt64\\bin"
+                "cwd": "c:\\Users\\Stephen\\projects\\helloworld"
             },
             "problemMatcher": [
                 "$gcc"

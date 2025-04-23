@@ -140,7 +140,7 @@ int main() {
         }
     }
 
-    cout << "\n🏁 The battle is over.\n";
+    cout << "\n The battle is over.\n";
     cout << "Thanks for playing, " << playerName << "!\n";
     return 0;
 }
