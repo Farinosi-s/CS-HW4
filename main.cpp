@@ -7,6 +7,7 @@
 #include "Abilities.h"
 #include "Monster.h"
 #include "Player.h"
+#include "Battle.h"
 
 using namespace std;
 
@@ -147,40 +148,12 @@ int main() {
 
         // Let the player choose an enemy to fight
         Monster enemy = chooseEnemy(enemies);
-
-        cout << "\n " << playerName << " encounters a " << enemy.getName() << "!\n";
         waitForEnter();
 
         // Battle loop
-        while (player.isAlive() && enemy.isAlive()) {
-            player.displayStatus();
-            enemy.displayStatus();
-
-            cout << "\nChoose your move:\n";
-            player.displayAbilities();
-            int choice;
-            cout << "Enter ability number: ";
-            cin >> choice;
-
-            player.useAbility(choice - 1, enemy);
-            waitForEnter();
-
-            if (!enemy.isAlive()) {
-                cout << "\n " << enemy.getName() << " has been defeated!\n";
-                break;
-            }
-
-            int enemyChoice = rand() % enemy.getAbilityCount();
-            enemy.useAbility(enemyChoice, player);
-            waitForEnter();
-
-            if (!player.isAlive()) {
-                cout << "\n " << player.getName() << " has fallen... The light fades...\n";
-                break;
-            }
-        }
-
-        cout << "\nThe battle is over.\n";
+        Battle battle(player, enemy);
+        battle.start();
+        
 
         // Ask if the player wants to fight another monster or quit
         cout << "\nHow would you like to proceed?\n";

@@ -12,6 +12,7 @@
                 "c:\\Users\\Stephen\\projects\\helloworld\\Abilities.cpp",
                 "c:\\Users\\Stephen\\projects\\helloworld\\Monster.cpp",
                 "c:\\Users\\Stephen\\projects\\helloworld\\Player.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\Battle.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
