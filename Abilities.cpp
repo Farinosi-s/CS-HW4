@@ -1,6 +1,8 @@
 #include "Abilities.h"
 #include "Creature.h"
 
+using namespace std;
+
 void Abilities::use(Creature& user, Creature& target) const {
     for (const auto& e : effects) {
         switch (e.type) {
@@ -20,7 +22,7 @@ void Abilities::use(Creature& user, Creature& target) const {
     }
 }
 
-std::vector<Abilities> Abilities::getAllAbilities() {
+vector<Abilities> Abilities::getAllAbilities() {
     return {
         Abilities("Slash", {{AbilityType::Damage, 15, ""}}),
         Abilities("Rage", {{AbilityType::Buff, 5, "attack"}}),

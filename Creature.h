@@ -3,18 +3,20 @@
 #include <vector>
 #include "Abilities.h"
 
+using namespace std;
+
 class Creature {
 protected:
-    std::string name;
+    string name;
     int health;
     int attack;
     int defense;
-    std::vector<Abilities> abilities;
+    vector<Abilities> abilities;
 
 public:
-    Creature(std::string name, int health, int attack, int defense, std::vector<Abilities> abilities);
+    Creature(string name, int health, int attack, int defense, vector<Abilities> abilities);
 
-    std::string getName() const;
+    string getName() const;
     int getHealth() const;
     int getAttack() const;
     int getDefense() const;
