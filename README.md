@@ -15,3 +15,5 @@ Optional potential good adds:
 
 -Removal of creatures after first kill, Maybe something after game if you've killed them all without resetting
 
+-Could add drawn monster/ability arts that play after uses. Would make the game more visually interesting 
+
