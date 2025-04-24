@@ -7,6 +7,8 @@ Running list of things to fix:
 
 -Make it so it doesn't break the game if your input isn't a number
 
+-Eventually we'll need more commenting and a header comment
+
 Optional potential good adds:
 
 -Exp that levels you up. Level ups increase base stats
