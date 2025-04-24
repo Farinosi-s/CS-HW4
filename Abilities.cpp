@@ -3,13 +3,16 @@
 
 using namespace std;
 
+
 void Abilities::use(Creature& user, Creature& target) const {
     for (const auto& e : effects) {
         switch (e.type) {
             case AbilityType::Damage:
-                if (e.value < 0) user.takeDamage(e.value);  // heal if negative
-                else target.takeDamage(e.value);
+                target.takeDamage(e.value);
                 break;
+            case AbilityType::Heal:
+                user.heal(e.value);
+                break;  
             case AbilityType::Buff:
                 if (e.statAffected == "attack") user.increaseAttack(e.value);
                 else if (e.statAffected == "defense") user.increaseDefense(e.value);
@@ -24,31 +27,31 @@ void Abilities::use(Creature& user, Creature& target) const {
 
 vector<Abilities> Abilities::getAllAbilities() {
     return {
-        Abilities("Slash", {{AbilityType::Damage, 15, ""}}),
-        Abilities("Rage", {{AbilityType::Buff, 5, "attack"}}),
-        Abilities("Iron Skin", {{AbilityType::Buff, 5, "defense"}}),
-        Abilities("Earthquake", {{AbilityType::Damage, 20, ""}}),
-        Abilities("Fireball", {{AbilityType::Damage, 25, ""}, {AbilityType::Debuff, 3, "defense"}}),
-        Abilities("Lightning Bolt", {{AbilityType::Damage, 30, ""}}),
-        Abilities("Greater Heal", {{AbilityType::Damage, -25, ""}}),
-        Abilities("Shadow Claw", {{AbilityType::Damage, 22, ""}}),
-        Abilities("Heal", {{AbilityType::Damage, -15, ""}}),
-        Abilities("Regenerate", {{AbilityType::Buff, 3, "defense"}}),
-        Abilities("Battle Cry", {{AbilityType::Buff, 5, "attack"}}),
-        Abilities("Curse", {{AbilityType::Debuff, 5, "attack"}}),
-        Abilities("Piercing Arrow", {{AbilityType::Damage, 20, ""}}),
-        Abilities("Weaken", {{AbilityType::Debuff, 4, "attack"}}),
-        Abilities("Mind Drain", {{AbilityType::Damage, 18, ""}, {AbilityType::Buff, 3, "attack"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Unused", {{AbilityType::Damage, 80, ""}}),       
+        Abilities("Slash", {{AbilityType::Damage, 20, ""}}),
+        Abilities("Rage", {{AbilityType::Buff, 5, "attack"}, {AbilityType::Buff, 5, "defense"}}),
+        Abilities("Intimidating Shout", {{AbilityType::Debuff, 8, "attack"}}),
+        Abilities("Rending Blow", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 6, "defense"}}),
+        Abilities("Fireball", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "defense"}}),
+        Abilities("Mage Armor", {{AbilityType::Buff, 8, "defense"}}),
+        Abilities("Health Potion", {{AbilityType::Heal, 15, ""}}),
+        Abilities("Monologue", {{AbilityType::Buff, 8, "attack"}}),
+        Abilities("Greater Heal", {{AbilityType::Heal, 25, ""}}),
+        Abilities("Necrotic Touch", {{AbilityType::Damage, 10, ""}, {AbilityType::Heal, 10, ""}}),
+        Abilities("Divine Plea", {{AbilityType::Buff, 5, "attack"}, {AbilityType::Heal, 10, ""}}),
+        Abilities("Radiant Bolt", {{AbilityType::Damage, 15, ""}, {AbilityType::Debuff, 3, "defense"}}),
+        Abilities("Piercing Arrow", {{AbilityType::Damage, 15, ""}, {AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Stealth", {{AbilityType::Buff, 3, "defense"}, {AbilityType::Buff, 5, "attack"}}),
+        Abilities("Mind Games", {{AbilityType::Debuff, 5, "defense"}, {AbilityType::Buff, 5, "attack"}}),
+        Abilities("Sneak Attack", {{AbilityType::Damage, 25, ""}}),
+        Abilities("Nature's Grasp", {{AbilityType::Debuff, 8, "defense"}}),
+        Abilities("Thorn Whip", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 5, "attack"}}),
+        Abilities("Shapeshift", {{AbilityType::Buff, 4, "attack"}, {AbilityType::Buff, 6, "defense"}}),
+        Abilities("Wild Strike", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "attack"}}),
+        Abilities("Splash", {{AbilityType::Debuff, 2, "defense"}}),
+        Abilities("Throw Rock", {{AbilityType::Damage, 8, ""}}),
+        Abilities("Flail", {{AbilityType::Buff, 2, "defense"}, {AbilityType::Buff, 2, "attack"}}),
+        Abilities("Run", {{AbilityType::Debuff, 2, "attack"}}),
 
     };
 }

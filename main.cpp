@@ -65,42 +65,42 @@ Player chooseClass(const string& playerName) {
             abilities = {
                 allAbilities[1],  // Slash
                 allAbilities[2], // Rage
-                allAbilities[3], // Iron Skin
-                allAbilities[4]   // Earthquake
+                allAbilities[3], // Intimidating Shout
+                allAbilities[4]   // Rending Blow
             };
             break;
         case 2:
             type = ClassType::Mage;
             abilities = {
                 allAbilities[5],  // Fireball
-                allAbilities[6],  // Lightning Bolt
-                allAbilities[7],  // Greater Heal
-                allAbilities[8]   // Shadow Claw
+                allAbilities[6],  // Mage Armor
+                allAbilities[7],  // Health Potion
+                allAbilities[8]   // Monologue
             };
             break;
         case 3:
             type = ClassType::Cleric;
             abilities = {
-                allAbilities[9],  // Heal
-                allAbilities[10], // Regenerate
-                allAbilities[11], // Battle Cry
-                allAbilities[12]  // Curse
+                allAbilities[9],  // Greater Heal
+                allAbilities[10], // Necrotic Touch
+                allAbilities[11], // Divine Plea
+                allAbilities[12]  // Radiant Bolt
             };
             break;
         case 4:
             type = ClassType::Rogue;
             abilities = {
                 allAbilities[13],  // Piercing Arrow
-                allAbilities[14], // Weaken
-                allAbilities[15], // Mind Drain
-                allAbilities[16]  // Armor Break
+                allAbilities[14], // Stealth
+                allAbilities[15], // Mind Games
+                allAbilities[16]  // Sneak Attack
             };
         case 5:
             type = ClassType::Druid;
             abilities = {
                 allAbilities[17], // Nature's Grasp
                 allAbilities[18], // Thorn Whip
-                allAbilities[19], // Fortify
+                allAbilities[19], // Shapeshift
                 allAbilities[20], // Enrage
             };
         case 6:
@@ -116,7 +116,7 @@ Player chooseClass(const string& playerName) {
     }
 
     // Create and return a Player object
-    return Player(playerName, 100, 10, 5, abilities, type);
+    return Player(playerName, 100, 5, 5, abilities, type);
 }
 
 int main() {

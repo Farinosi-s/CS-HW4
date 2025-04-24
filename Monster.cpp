@@ -13,45 +13,29 @@ void Monster::takeTurn(Creature& target) {
 
 vector<Monster> Monster::getDefaultMonsters() {
     return {
-        Monster("Nightfang", 80, 8, 4, {
-            Abilities("Dark Claw", {
-                {AbilityType::Damage, 18, ""},
-                {AbilityType::Debuff, 3, "defense"}
-            }),
-            Abilities("Shadow Howl", {
-                {AbilityType::Debuff, 4, "attack"}
-            }),
-            Abilities("Night Slash", {
-                {AbilityType::Damage, 22, ""}
-            })
+        Monster("Mind Flayer", 100, 5, 10, {
+            Abilities("Mind Grasp", {{AbilityType::Damage, 18, ""},{AbilityType::Debuff, 3, "defense"}}),
+            Abilities("Disorient", {{AbilityType::Debuff, 4, "attack"},{AbilityType::Debuff, 4, "defense"}}),
+            Abilities("Illithid Pulse", {{AbilityType::Damage, 16, ""},{AbilityType::Buff, 3, "attack"}}),
+            Abilities("Psionic Blast", {{AbilityType::Damage, 18, ""}}),
+            Abilities("Cerebral Burn", {{AbilityType::Damage, 12, ""}, {AbilityType::Heal, 6, ""}})
         }),
 
-        Monster("Bonegnasher", 70, 9, 2, {
-            Abilities("Piercing Roar", {
-                {AbilityType::Damage, 15, ""},
-                {AbilityType::Debuff, 2, "attack"}
-            }),
-            Abilities("Bone Crush", {
-                {AbilityType::Damage, 20, ""}
-            }),
-            Abilities("Gnaw", {
-                {AbilityType::Damage, 12, ""},
-                {AbilityType::Buff, 2, "attack"}
-            })
+        Monster("Red Wizard of Thay", 95, 9, 2, {
+            Abilities("Dark Ritual", {{AbilityType::Buff, 4, "attack"},{AbilityType::Buff, 4, "defense"}}),
+            Abilities("Necrotic Touch", {{AbilityType::Damage, 10, ""},{AbilityType::Heal, 5, ""}}),
+            Abilities("Arcane Chains", {{AbilityType::Damage, 5, ""},{AbilityType::Debuff, 3, "attack"}, {AbilityType::Debuff, 3, "defense"}}),
+            Abilities("Hellfire Sike", {{AbilityType::Damage, 20, ""}}),
+            Abilities("Blood Pact", {{AbilityType::Heal, -5, ""},{AbilityType::Buff, 10, "defense"}})
         }),
 
-        Monster("Ash Serpent", 65, 10, 3, {
-            Abilities("Fire Breath", {
-                {AbilityType::Damage, 22, ""},
-                {AbilityType::Debuff, 1, "defense"}
-            }),
-            Abilities("Coil", {
-                {AbilityType::Buff, 3, "defense"}
-            }),
-            Abilities("Tail Swipe", {
-                {AbilityType::Damage, 16, ""}
-            })
-        })
+        Monster("Young Red Dragon", 120, 10, 8, {
+            Abilities("Flame Breath", {{AbilityType::Damage, 23, ""},{AbilityType::Debuff, 1, "defense"}}),
+            Abilities("Sky Roar", {{AbilityType::Buff, 8, "attack"}}),
+            Abilities("Tail Smash", {{AbilityType::Damage, 16, ""},{AbilityType::Debuff, 3, "defense"}}),
+            Abilities("Wing Buffet", {{AbilityType::Damage, 18, ""},{AbilityType::Debuff, 3, "attack"}}),
+            Abilities("Ancient Magic", {{AbilityType::Heal, 10, ""},{AbilityType::Buff, 3, "defense"}})
+        }),
     };
 }
 

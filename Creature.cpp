@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include "Abilities.h"
 #include <iostream>
 #include <algorithm>
 
@@ -18,11 +19,21 @@ int Creature::getDefense() const { return defense; }
 bool Creature::isAlive() const { return health > 0; }
 
 void Creature::takeDamage(int value) {
-    int damageTaken = max(0, value - defense);
+    double reduction = (defense* .01);
+    double damageTaken = value *= (1 - reduction);
+    damageTaken *= (1 - reduction);
     health -= damageTaken;
     if (health < 0) health = 0;
 
-    cout << name << " takes " << damageTaken << " damage!\n";
+    cout << name << " takes " << static_cast<int>(damageTaken) << " damage!\n";
+}
+
+void Creature::heal(int value) {
+    int heal = value;
+    health += heal;
+    if (health > 100) health = 100;
+
+    cout << name << " heals " << value << " damage!\n";
 }
 
 void Creature::increaseAttack(int value) {
@@ -32,7 +43,6 @@ void Creature::increaseAttack(int value) {
 
 void Creature::decreaseAttack(int value) {
     attack -= value;
-    if (attack < 0) attack = 0;
     cout << name << "'s attack decreases by " << value << "!\n";
 }
 
@@ -43,7 +53,6 @@ void Creature::increaseDefense(int value) {
 
 void Creature::decreaseDefense(int value) {
     defense -= value;
-    if (defense < 0) defense = 0;
     cout << name << "'s defense decreases by " << value << "!\n";
 }
 

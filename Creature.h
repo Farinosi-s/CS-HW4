@@ -23,6 +23,7 @@ public:
     bool isAlive() const;
 
     void takeDamage(int value);
+    void heal(int value);
     void increaseAttack(int value);
     void decreaseAttack(int value);
     void increaseDefense(int value);

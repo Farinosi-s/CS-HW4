@@ -3,7 +3,6 @@
 
 using namespace std;
 
-string monsterArt;
 
 class Monster : public Creature {
 public:

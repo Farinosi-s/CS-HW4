@@ -7,6 +7,7 @@ using namespace std;
 
 enum class AbilityType {
     Damage,
+    Heal,
     Buff,
     Debuff
 };
