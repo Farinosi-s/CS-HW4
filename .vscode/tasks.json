@@ -7,16 +7,16 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "main.cpp",
-                "Creature.cpp",
-                "Abilities.cpp",
-                "Monster.cpp",
-                "Player.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\main.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\Creature.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\Abilities.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\Monster.cpp",
+                "c:\\Users\\Stephen\\projects\\helloworld\\Player.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "c:\\Users\\Stephen\\projects\\helloworld"
+                "cwd": "C:\\msys64\\ucrt64\\bin\\"
             },
             "problemMatcher": [
                 "$gcc"

@@ -1,8 +1,16 @@
 #pragma once
 #include "Creature.h"
 
+using namespace std;
+
+string monsterArt;
+
 class Monster : public Creature {
 public:
-    Monster(string n, int hp, int atk, int def, vector<Abilities> a);
-    void displayStatus() const override;
+    Monster(string name, int health, int attack, int defense, vector<Abilities> abilities)
+        : Creature(name, health, attack, defense, abilities) {}
+
+    void takeTurn(Creature& target);
+    static vector<Monster> getDefaultMonsters();
+    static bool anyAlive(const vector<Monster>& monsters);
 };

@@ -1,10 +1,12 @@
-#include <iostream>
 #include "Player.h"
 
-Player::Player(string n, int hp, int atk, int def, vector<Abilities> a, ClassType c)
-    : Creature(n, hp, atk, def, a), classType(c) {}
+using namespace std;
 
-void Player::displayStatus() const {
-    cout << name << " [Player] HP: " << health << "/" << maxHealth
-         << " | ATK: " << attack << " | DEF: " << defense << endl;
+// Constructor: Initializes a Player object with given attributes and class type
+Player::Player(string name, int health, int attack, int defense, vector<Abilities> abilities, ClassType type)
+    : Creature(name, health, attack, defense, abilities), type(type) {}
+
+// Returns the player's class type
+ClassType Player::getClassType() const {
+    return type;
 }

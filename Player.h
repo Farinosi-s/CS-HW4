@@ -1,5 +1,9 @@
 #pragma once
 #include "Creature.h"
+#include <vector>
+#include <string>
+
+using namespace std;
 
 enum class ClassType {
     Warrior,
@@ -10,9 +14,10 @@ enum class ClassType {
 
 class Player : public Creature {
 private:
-    ClassType classType;
+    ClassType type;
+
 public:
-    ClassType getClassType() const { return classType;}
-    Player(string n, int hp, int atk, int def, vector<Abilities> a, ClassType c);
-    void displayStatus() const override;
+    Player(string name, int health, int attack, int defense, vector<Abilities> abilities, ClassType type);
+
+    ClassType getClassType() const;
 };

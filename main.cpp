@@ -10,21 +10,41 @@
 
 using namespace std;
 
-// Pause for dramatic effect
 void pause(int ms = 1000) {
     this_thread::sleep_for(chrono::milliseconds(ms));
 }
 
-// Prompt for enter
 void waitForEnter() {
     cout << "\n(Press Enter to continue...)\n";
     cin.ignore();
     cin.get();
 }
 
-// Class selection logic moved OUTSIDE main
+// Function to display available enemies
+void displayEnemies(const vector<Monster>& enemies) {
+    cout << "\nChoose an enemy to fight:\n";
+    for (size_t i = 0; i < enemies.size(); ++i) {
+        cout << i + 1 << ". " << enemies[i].getName() << "\n";
+    }
+}
+
+// Function to allow player to choose an enemy
+Monster chooseEnemy(const vector<Monster>& enemies) {
+    int choice;
+    cout << "Enter enemy number: ";
+    cin >> choice;
+
+    if (choice < 1 || choice > enemies.size()) {
+        cout << "Invalid choice, picking the first enemy.\n";
+        choice = 1;
+    }
+
+    return enemies[choice - 1];
+}
+
+// Function to choose the player's class
 Player chooseClass(const string& playerName) {
-    vector<Abilities> all = Abilities::getAllAbilities();
+    vector<Abilities> allAbilities = Abilities::getAllAbilities(); // Assuming you have a function to get all abilities
     vector<Abilities> abilities;
     ClassType type;
 
@@ -42,42 +62,43 @@ Player chooseClass(const string& playerName) {
         case 1:
             type = ClassType::Warrior;
             abilities = {
-                all[0],  // Slash
-                all[11], // Rage
-                all[12], // Iron Skin
-                all[6]   // Earthquake
+                allAbilities[0],  // Slash
+                allAbilities[11], // Rage
+                allAbilities[12], // Iron Skin
+                allAbilities[6]   // Earthquake
             };
             break;
         case 2:
             type = ClassType::Mage;
             abilities = {
-                all[1],  // Fireball
-                all[2],  // Lightning Bolt
-                all[9],  // Greater Heal
-                all[4]   // Shadow Claw
+                allAbilities[1],  // Fireball
+                allAbilities[2],  // Lightning Bolt
+                allAbilities[9],  // Greater Heal
+                allAbilities[4]   // Shadow Claw
             };
             break;
         case 3:
             type = ClassType::Cleric;
             abilities = {
-                all[8],  // Heal
-                all[10], // Regenerate
-                all[13], // Battle Cry
-                all[16]  // Curse
+                allAbilities[8],  // Heal
+                allAbilities[10], // Regenerate
+                allAbilities[13], // Battle Cry
+                allAbilities[16]  // Curse
             };
             break;
         case 4:
         default:
             type = ClassType::Rogue;
             abilities = {
-                all[5],  // Piercing Arrow
-                all[15], // Weaken
-                all[18], // Mind Drain
-                all[19]  // Armor Break
+                allAbilities[5],  // Piercing Arrow
+                allAbilities[15], // Weaken
+                allAbilities[18], // Mind Drain
+                allAbilities[19]  // Armor Break
             };
             break;
     }
 
+    // Create and return a Player object
     return Player(playerName, 100, 10, 5, abilities, type);
 }
 
@@ -98,49 +119,66 @@ int main() {
     cout << "\nWelcome, " << playerName << ". Your journey begins now...\n";
     pause(1500);
 
-    // Get the player class and abilities
+    // Initialize available enemies
+    vector<Monster> enemies = Monster::getDefaultMonsters(); // Assuming you have a default set of enemies
+
+    // Initialize player class
     Player player = chooseClass(playerName);
 
-    // Set enemy abilities manually
-    vector<Abilities> enemyAbilities = {
-        Abilities("Poison Fang", AbilityType::Damage, 12),
-        Abilities("Dark Claw", AbilityType::Damage, 18),
-        Abilities("Scare", AbilityType::Debuff, 4, "attack")
-    };
+    bool continueFighting = true;
+    while (continueFighting) {
+        displayEnemies(enemies);
 
-    Monster enemy("Nightfang", 80, 8, 4, enemyAbilities);
+        // Let the player choose an enemy to fight
+        Monster enemy = chooseEnemy(enemies);
 
-    cout << "\n" << playerName << " vs " << enemy.getName() << " begins!\n";
-    waitForEnter();
-
-    while (player.isAlive() && enemy.isAlive()) {
-        player.displayStatus();
-        enemy.displayStatus();
-
-        cout << "\nChoose your move:\n";
-        player.displayAbilities();
-        int choice;
-        cout << "Enter ability number: ";
-        cin >> choice;
-
-        player.useAbility(choice - 1, enemy);
+        cout << "\n " << playerName << " vs " << enemy.getName() << " begins!\n";
         waitForEnter();
 
-        if (!enemy.isAlive()) {
-            cout << "\n" << enemy.getName() << " has been defeated!\n";
-            break;
+        // Battle loop
+        while (player.isAlive() && enemy.isAlive()) {
+            player.displayStatus();
+            enemy.displayStatus();
+
+            cout << "\nChoose your move:\n";
+            player.displayAbilities();
+            int choice;
+            cout << "Enter ability number: ";
+            cin >> choice;
+
+            player.useAbility(choice - 1, enemy);
+            waitForEnter();
+
+            if (!enemy.isAlive()) {
+                cout << "\n " << enemy.getName() << " has been defeated!\n";
+                break;
+            }
+
+            int enemyChoice = rand() % enemy.getAbilityCount();
+            enemy.useAbility(enemyChoice, player);
+            waitForEnter();
+
+            if (!player.isAlive()) {
+                cout << "\n " << player.getName() << " has fallen... The light fades...\n";
+                break;
+            }
         }
 
-        int enemyChoice = rand() % enemy.getAbilityCount();
-        enemy.useAbility(enemyChoice, player);
-        waitForEnter();
+        cout << "\nThe battle is over.\n";
 
-        if (!player.isAlive()) {
-            cout << "\n" << player.getName() << " has fallen... The light fades...\n";
+        // Ask if the player wants to fight another monster or quit
+        cout << "\nWould you like to fight another monster or quit?\n";
+        cout << "1. Fight another monster\n";
+        cout << "2. Quit the game\n";
+        int choice;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 2) {
+            continueFighting = false;
+            cout << "\nThanks for playing, " << playerName << "!\n";
         }
     }
 
-    cout << "\n The battle is over.\n";
-    cout << "Thanks for playing, " << playerName << "!\n";
     return 0;
 }

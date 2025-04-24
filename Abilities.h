@@ -1,30 +1,33 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 enum class AbilityType {
     Damage,
-    Heal,
     Buff,
     Debuff
 };
 
-class Abilities {
-private:
-    string name;
+struct Effect {
     AbilityType type;
-    int power;
-    string stat;
+    int value;
+    string statAffected;
+};
 
+class Creature; // Forward declaration
+
+class Abilities {
 public:
-    Abilities(string n, AbilityType t, int p, string s = "");
-    
-    string getName() const;
-    AbilityType getType() const;
-    int getPower() const;
-    string getStat() const;
+    string name;
+    vector<Effect> effects;
+
+    Abilities(string name, vector<Effect> effects)
+        : name(name), effects(effects) {}
+
+    void use(Creature& user, Creature& target) const;
 
     static vector<Abilities> getAllAbilities();
 };
