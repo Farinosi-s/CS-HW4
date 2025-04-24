@@ -44,7 +44,7 @@ Monster chooseEnemy(const vector<Monster>& enemies) {
 
 // Function to choose the player's class
 Player chooseClass(const string& playerName) {
-    vector<Abilities> allAbilities = Abilities::getAllAbilities(); // Assuming you have a function to get all abilities
+    vector<Abilities> allAbilities = Abilities::getAllAbilities(); 
     vector<Abilities> abilities;
     ClassType type;
 
@@ -103,7 +103,7 @@ Player chooseClass(const string& playerName) {
                 allAbilities[17], // Nature's Bounty
                 allAbilities[18], // Thorn Whip
                 allAbilities[19], // Shapeshift
-                allAbilities[20], // Enrage
+                allAbilities[20], // Wild Strike
             };
         break;
     }
