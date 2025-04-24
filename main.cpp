@@ -22,8 +22,8 @@ void waitForEnter() {
 
 // Function to display available enemies
 void displayEnemies(const vector<Monster>& enemies) {
-    cout << "\nChoose an enemy to fight:\n";
-    for (size_t i = 0; i < enemies.size(); ++i) {
+    cout << "\nThe guild's Hunt board displays jobs for the following enemies:\n";
+    for (int i = 0; i < enemies.size(); ++i) {
         cout << i + 1 << ". " << enemies[i].getName() << "\n";
     }
 }
@@ -31,7 +31,7 @@ void displayEnemies(const vector<Monster>& enemies) {
 // Function to allow player to choose an enemy
 Monster chooseEnemy(const vector<Monster>& enemies) {
     int choice;
-    cout << "Enter enemy number: ";
+    cout << "Choose your target's number: ";
     cin >> choice;
 
     if (choice < 1 || choice > enemies.size()) {
@@ -48,13 +48,13 @@ Player chooseClass(const string& playerName) {
     vector<Abilities> abilities;
     ClassType type;
 
-    cout << "\nChoose your class:\n";
-    cout << "1. Warrior\n";
-    cout << "2. Mage\n";
-    cout << "3. Cleric\n";
-    cout << "4. Rogue\n";
-    cout << "5. Druid\n";
-    cout << "Enter choice: ";
+    cout << "\nYou come across a chest of imbued weapons. Which calls to you?:\n";
+    cout << "1. Greataxe (Warrior)\n";
+    cout << "2. Arcane Tome (Mage)\n";
+    cout << "3. Holy Symbol (Cleric)\n";
+    cout << "4. Pair of Daggers (Rogue)\n";
+    cout << "5. Oaken Staff (Druid)\n";
+    cout << "Enter the item's number: ";
 
     int choice;
     cin >> choice;
@@ -64,8 +64,8 @@ Player chooseClass(const string& playerName) {
             type = ClassType::Warrior;
             abilities = {
                 allAbilities[1],  // Slash
-                allAbilities[2], // Rage
-                allAbilities[3], // Intimidating Shout
+                allAbilities[2],  // Rage
+                allAbilities[3],  // Intimidating Shout
                 allAbilities[4]   // Rending Blow
             };
             break;
@@ -90,27 +90,19 @@ Player chooseClass(const string& playerName) {
         case 4:
             type = ClassType::Rogue;
             abilities = {
-                allAbilities[13],  // Piercing Arrow
+                allAbilities[13], // Piercing Arrow
                 allAbilities[14], // Stealth
                 allAbilities[15], // Mind Games
                 allAbilities[16]  // Sneak Attack
             };
         case 5:
+        default:
             type = ClassType::Druid;
             abilities = {
                 allAbilities[17], // Nature's Grasp
                 allAbilities[18], // Thorn Whip
                 allAbilities[19], // Shapeshift
                 allAbilities[20], // Enrage
-            };
-        case 6:
-        default:
-            type = ClassType::Wretch;
-            abilities = {
-                allAbilities[21], //Splash
-                allAbilities[22], //Throw Rock
-                allAbilities[23], //Flail
-                allAbilities[24], //Run
             };
         break;
     }
@@ -130,7 +122,7 @@ int main() {
     pause();
 
     string playerName;
-    cout << "\nWhat is your name, brave warrior? ";
+    cout << "\nWhat is your name, brave adventurer? ";
     getline(cin, playerName);
 
     cout << "\nWelcome, " << playerName << ". Your journey begins now...\n";
@@ -149,7 +141,7 @@ int main() {
         // Let the player choose an enemy to fight
         Monster enemy = chooseEnemy(enemies);
 
-        cout << "\n " << playerName << " vs " << enemy.getName() << " begins!\n";
+        cout << "\n " << playerName << " encounters a" << enemy.getName() << "!\n";
         waitForEnter();
 
         // Battle loop
@@ -184,16 +176,20 @@ int main() {
         cout << "\nThe battle is over.\n";
 
         // Ask if the player wants to fight another monster or quit
-        cout << "\nWould you like to fight another monster or quit?\n";
-        cout << "1. Fight another monster\n";
-        cout << "2. Quit the game\n";
+        cout << "\nHow would you like to proceed?\n";
+        cout << "1. Press the attack, continue fighting!\n";
+        cout << "2. Return to camp and heal before setting out again\n";
+        cout << "3. Quit the game\n";
         int choice;
         cout << "Enter choice: ";
         cin >> choice;
 
-        if (choice == 2) {
+        if (choice == 3) {
             continueFighting = false;
-            cout << "\nThanks for playing, " << playerName << "!\n";
+            cout << "\n" << playerName << "retires from adventuring!\n";
+        }
+        if (choice == 2) {
+            player.healPlayer(100);
         }
     }
 

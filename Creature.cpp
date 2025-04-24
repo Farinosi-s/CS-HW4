@@ -21,7 +21,6 @@ bool Creature::isAlive() const { return health > 0; }
 void Creature::takeDamage(int value) {
     double reduction = (defense* .01);
     double damageTaken = value *= (1 - reduction);
-    damageTaken *= (1 - reduction);
     health -= damageTaken;
     if (health < 0) health = 0;
 
@@ -33,7 +32,7 @@ void Creature::heal(int value) {
     health += heal;
     if (health > 100) health = 100;
 
-    cout << name << " heals " << value << " damage!\n";
+    cout << name << " recieves" << value << "points of healing!\n";
 }
 
 void Creature::increaseAttack(int value) {
@@ -49,6 +48,10 @@ void Creature::decreaseAttack(int value) {
 void Creature::increaseDefense(int value) {
     defense += value;
     cout << name << "'s defense increases by " << value << "!\n";
+    if (defense >= 51){
+        defense = 50;
+        cout << name << "has achieved peak hardiness.. further results not guaranteed!";
+    }
 }
 
 void Creature::decreaseDefense(int value) {

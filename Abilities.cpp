@@ -48,10 +48,5 @@ vector<Abilities> Abilities::getAllAbilities() {
         Abilities("Thorn Whip", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 5, "attack"}}),
         Abilities("Shapeshift", {{AbilityType::Buff, 4, "attack"}, {AbilityType::Buff, 6, "defense"}}),
         Abilities("Wild Strike", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "attack"}}),
-        Abilities("Splash", {{AbilityType::Debuff, 2, "defense"}}),
-        Abilities("Throw Rock", {{AbilityType::Damage, 8, ""}}),
-        Abilities("Flail", {{AbilityType::Buff, 2, "defense"}, {AbilityType::Buff, 2, "attack"}}),
-        Abilities("Run", {{AbilityType::Debuff, 2, "attack"}}),
-
     };
 }

@@ -20,6 +20,6 @@ private:
 
 public:
     Player(string name, int health, int attack, int defense, vector<Abilities> abilities, ClassType type);
-
+    void healPlayer(int amount);
     ClassType getClassType() const;
 };

@@ -13,7 +13,21 @@ void Monster::takeTurn(Creature& target) {
 
 vector<Monster> Monster::getDefaultMonsters() {
     return {
-        Monster("Mind Flayer", 100, 5, 10, {
+        Monster("Displacer Beast", 60, 5, 5, {
+            Abilities("Blur", {{AbilityType::Buff, 5, "defense"}}),
+            Abilities("Shred", {{AbilityType::Damage, 8, ""},{AbilityType::Debuff, 3, "defense"}}),
+            Abilities("Ferocious Bite", {{AbilityType::Damage, 8, ""},{AbilityType::Debuff, 3, "attack"}}),
+            Abilities("Brutal Slash", {{AbilityType::Damage, 13, ""}}),
+            Abilities("Beastial Wrath", {{AbilityType::Buff, 3, "attack"}, {AbilityType::Heal, 6, ""}})
+        }),
+        Monster("Goblin Chieftain", 80, 4, 5, {
+            Abilities("Club", {{AbilityType::Damage, 8, ""}}),
+            Abilities("Cunning Trap", {{AbilityType::Damage, 5, ""},{AbilityType::Debuff, 4, "defense"}}),
+            Abilities("Bugbear Bodyguards", {{AbilityType::Damage, 8, ""},{AbilityType::Buff, 3, "attack"},{AbilityType::Heal, 5, ""}}),
+            Abilities("Call the Worgs", {{AbilityType::Damage, 8, ""},{AbilityType::Buff, 5, "attack"}}),
+            Abilities("War Drums", {{AbilityType::Buff, 5, "attack"}, {AbilityType::Heal, 15, ""}})
+        }),
+        Monster("Mind Flayer", 90, 5, 10, {
             Abilities("Mind Grasp", {{AbilityType::Damage, 18, ""},{AbilityType::Debuff, 3, "defense"}}),
             Abilities("Disorient", {{AbilityType::Debuff, 4, "attack"},{AbilityType::Debuff, 4, "defense"}}),
             Abilities("Illithid Pulse", {{AbilityType::Damage, 16, ""},{AbilityType::Buff, 3, "attack"}}),
