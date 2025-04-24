@@ -32,7 +32,7 @@ void Creature::heal(int value) {
     health += heal;
     if (health > 100) health = 100;
 
-    cout << name << " recieves" << value << "points of healing!\n";
+    cout << name << " recieves " << value << " points of healing!\n";
 }
 
 void Creature::increaseAttack(int value) {

@@ -141,7 +141,7 @@ int main() {
         // Let the player choose an enemy to fight
         Monster enemy = chooseEnemy(enemies);
 
-        cout << "\n " << playerName << " encounters a" << enemy.getName() << "!\n";
+        cout << "\n " << playerName << " encounters a " << enemy.getName() << "!\n";
         waitForEnter();
 
         // Battle loop
