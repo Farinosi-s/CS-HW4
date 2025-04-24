@@ -12,6 +12,6 @@ ClassType Player::getClassType() const {
 }
 
 void Player::healPlayer(int amount) {
-    heal(amount); // 100 is equal to the max amount
+    heal(amount); 
     std::cout << getName() << " is restored after a long night's rest...\n";
 }
