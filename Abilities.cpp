@@ -7,9 +7,12 @@ using namespace std;
 void Abilities::use(Creature& user, Creature& target) const {
     for (const auto& e : effects) {
         switch (e.type) {
-            case AbilityType::Damage:
-                target.takeDamage(e.value);
+            case AbilityType::Damage: {
+                int userAttack = user.getAttack() * .02; 
+                int scaledDamage = static_cast<int>(e.value * (userAttack + 1)); 
+                target.takeDamage(scaledDamage);
                 break;
+            }
             case AbilityType::Heal:
                 user.heal(e.value);
                 break;  

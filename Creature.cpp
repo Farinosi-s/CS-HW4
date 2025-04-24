@@ -52,7 +52,7 @@ void Creature::increaseDefense(int value) {
     cout << name << "'s defense increases by " << value << "!\n";
     if (defense >= 51){
         defense = 50;
-        cout << name << "has achieved peak hardiness.. further results not guaranteed!";
+        cout << name << " has achieved peak hardiness.. further results not guaranteed!";
     }
 }
 

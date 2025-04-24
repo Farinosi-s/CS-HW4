@@ -95,6 +95,7 @@ Player chooseClass(const string& playerName) {
                 allAbilities[15], // Mind Games
                 allAbilities[16]  // Sneak Attack
             };
+            break;
         case 5:
         default:
             type = ClassType::Druid;
