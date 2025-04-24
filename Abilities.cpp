@@ -47,7 +47,7 @@ vector<Abilities> Abilities::getAllAbilities() {
         Abilities("Stealth", {{AbilityType::Buff, 3, "defense"}, {AbilityType::Buff, 5, "attack"}}),
         Abilities("Mind Games", {{AbilityType::Debuff, 5, "defense"}, {AbilityType::Buff, 5, "attack"}}),
         Abilities("Sneak Attack", {{AbilityType::Damage, 25, ""}}),
-        Abilities("Nature's Grasp", {{AbilityType::Debuff, 8, "defense"}}),
+        Abilities("Nature's Bounty", {{AbilityType::Heal, 20, ""}}),
         Abilities("Thorn Whip", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 5, "attack"}}),
         Abilities("Shapeshift", {{AbilityType::Buff, 4, "attack"}, {AbilityType::Buff, 6, "defense"}}),
         Abilities("Wild Strike", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "attack"}}),

@@ -57,7 +57,7 @@ Player chooseClass(const string& playerName) {
     cout << "Enter the item's number: ";
 
     int choice;
-    cin >> choice;
+    cin >> choice;                                      //right now, all invalid choices break the game. Might want to fix
 
     switch (choice) {
         case 1:
@@ -100,7 +100,7 @@ Player chooseClass(const string& playerName) {
         default:
             type = ClassType::Druid;
             abilities = {
-                allAbilities[17], // Nature's Grasp
+                allAbilities[17], // Nature's Bounty
                 allAbilities[18], // Thorn Whip
                 allAbilities[19], // Shapeshift
                 allAbilities[20], // Enrage
