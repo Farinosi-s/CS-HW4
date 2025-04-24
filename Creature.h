@@ -9,15 +9,17 @@ class Creature {
 protected:
     string name;
     int health;
+    int maxHealth;
     int attack;
     int defense;
     vector<Abilities> abilities;
 
 public:
-    Creature(string name, int health, int attack, int defense, vector<Abilities> abilities);
+    Creature(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities);
 
     string getName() const;
     int getHealth() const;
+    int getMaxHealth() const;
     int getAttack() const;
     int getDefense() const;
     bool isAlive() const;

@@ -5,12 +5,14 @@
 
 using namespace std;
 
-Creature::Creature(string name, int health, int attack, int defense, vector<Abilities> abilities)
-    : name(name), health(health), attack(attack), defense(defense), abilities(abilities) {}
+Creature::Creature(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities)
+    : name(name), health(health), maxHealth(maxHealth), attack(attack), defense(defense), abilities(abilities) {}
 
 string Creature::getName() const { return name; }
 
 int Creature::getHealth() const { return health; }
+
+int Creature::getMaxHealth() const { return maxHealth; }
 
 int Creature::getAttack() const { return attack; }
 
@@ -30,7 +32,7 @@ void Creature::takeDamage(int value) {
 void Creature::heal(int value) {
     int heal = value;
     health += heal;
-    if (health > 100) health = 100;
+    if (health > maxHealth) health = maxHealth;
 
     cout << name << " recieves " << value << " points of healing!\n";
 }
@@ -65,7 +67,7 @@ void Creature::displayStatus() const {
 }
 
 void Creature::displayAbilities() const {
-    for (size_t i = 0; i < abilities.size(); ++i) {
+    for (int i = 0; i < abilities.size(); ++i) {
         cout << i + 1 << ". " << abilities[i].name << "\n";
     }
 }

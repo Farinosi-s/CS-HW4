@@ -11,7 +11,6 @@ enum class ClassType {
     Cleric,
     Rogue,
     Druid,
-    Wretch
 };
 
 class Player : public Creature {
@@ -19,7 +18,7 @@ private:
     ClassType type;
 
 public:
-    Player(string name, int health, int attack, int defense, vector<Abilities> abilities, ClassType type);
+    Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type);
     void healPlayer(int amount);
     ClassType getClassType() const;
 };

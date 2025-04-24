@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void pause(int ms = 1000) {
+void pause(int ms = 4000) {
     this_thread::sleep_for(chrono::milliseconds(ms));
 }
 
@@ -22,7 +22,7 @@ void waitForEnter() {
 
 // Function to display available enemies
 void displayEnemies(const vector<Monster>& enemies) {
-    cout << "\nThe guild's Hunt board displays jobs for the following enemies:\n";
+    cout << "\nWhich quarry will you hunt next?:\n";
     for (int i = 0; i < enemies.size(); ++i) {
         cout << i + 1 << ". " << enemies[i].getName() << "\n";
     }
@@ -34,7 +34,7 @@ Monster chooseEnemy(const vector<Monster>& enemies) {
     cout << "Choose your target's number: ";
     cin >> choice;
 
-    if (choice < 1 || choice > enemies.size()) {
+    if (choice < 1 || choice > enemies.size()) {                        //need to make it so that this is any choice that isn't a number between expected values
         cout << "Invalid choice, picking the first enemy.\n";
         choice = 1;
     }
@@ -48,7 +48,7 @@ Player chooseClass(const string& playerName) {
     vector<Abilities> abilities;
     ClassType type;
 
-    cout << "\nYou come across a chest of imbued weapons. Which calls to you?:\n";
+    cout << "\nWhich weapon is readied for battle?: \n";
     cout << "1. Greataxe (Warrior)\n";
     cout << "2. Arcane Tome (Mage)\n";
     cout << "3. Holy Symbol (Cleric)\n";
@@ -108,17 +108,23 @@ Player chooseClass(const string& playerName) {
     }
 
     // Create and return a Player object
-    return Player(playerName, 100, 5, 5, abilities, type);
+    return Player(playerName, 100, 100, 5, 5, abilities, type);
 }
 
 int main() {
     srand(time(0));
-
-    cout << "A distant world lies on the edge of light and darkness...\n";
+    cout << "\n";
+    cout << "\nThe sun sinks behind the Bloodspire Mountains, draping the village of Bramblehearth in shadows and fear...\n";
     pause();
-    cout << "Creatures clash under the crimson sky...\n";
+    cout << "For weeks now, beasts not seen in a generation have stalked the edges of civilization—howling things with too many eyes, \n";
     pause();
-    cout << "\nBut one hero rises...\n";
+    cout << "scales that gleam like armor, and claws that tear through stone. The people are desperate. The Council of Elders has issued a call: \n";
+    pause();
+    cout << "brave souls willing to hunt the nightmares will be rewarded with coin, fame… and perhaps answers...\n";
+    pause();
+    cout << "\nIn a smoky tavern lit by flickering lanterns, you rise from your seat. You are no common traveler—you are a trained adventurer, \n";
+    pause();
+    cout << "forged by battle and bound by purpose.\n";
     pause();
 
     string playerName;
@@ -129,7 +135,7 @@ int main() {
     pause(1500);
 
     // Initialize available enemies
-    vector<Monster> enemies = Monster::getDefaultMonsters(); // Assuming you have a default set of enemies
+    vector<Monster> enemies = Monster::getDefaultMonsters();
 
     // Initialize player class
     Player player = chooseClass(playerName);
@@ -186,7 +192,7 @@ int main() {
 
         if (choice == 3) {
             continueFighting = false;
-            cout << "\n" << playerName << "retires from adventuring!\n";
+            cout << "\n" << playerName << "has retired from the adventuring life...\n";
         }
         if (choice == 2) {
             player.healPlayer(100);

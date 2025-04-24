@@ -12,7 +12,8 @@ enum class AbilityType {
     Debuff
 };
 
-struct Effect {
+class Effect {
+public:
     AbilityType type;
     int value;
     string statAffected;
