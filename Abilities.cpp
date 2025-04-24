@@ -39,6 +39,16 @@ vector<Abilities> Abilities::getAllAbilities() {
         Abilities("Piercing Arrow", {{AbilityType::Damage, 20, ""}}),
         Abilities("Weaken", {{AbilityType::Debuff, 4, "attack"}}),
         Abilities("Mind Drain", {{AbilityType::Damage, 18, ""}, {AbilityType::Buff, 3, "attack"}}),
-        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}})
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+        Abilities("Armor Break", {{AbilityType::Debuff, 5, "defense"}}),
+
     };
 }

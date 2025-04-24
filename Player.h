@@ -9,7 +9,9 @@ enum class ClassType {
     Warrior,
     Mage,
     Cleric,
-    Rogue
+    Rogue,
+    Druid,
+    Wretch
 };
 
 class Player : public Creature {

@@ -53,6 +53,7 @@ Player chooseClass(const string& playerName) {
     cout << "2. Mage\n";
     cout << "3. Cleric\n";
     cout << "4. Rogue\n";
+    cout << "5. Druid\n";
     cout << "Enter choice: ";
 
     int choice;
@@ -62,40 +63,56 @@ Player chooseClass(const string& playerName) {
         case 1:
             type = ClassType::Warrior;
             abilities = {
-                allAbilities[0],  // Slash
-                allAbilities[11], // Rage
-                allAbilities[12], // Iron Skin
-                allAbilities[6]   // Earthquake
+                allAbilities[1],  // Slash
+                allAbilities[2], // Rage
+                allAbilities[3], // Iron Skin
+                allAbilities[4]   // Earthquake
             };
             break;
         case 2:
             type = ClassType::Mage;
             abilities = {
-                allAbilities[1],  // Fireball
-                allAbilities[2],  // Lightning Bolt
-                allAbilities[9],  // Greater Heal
-                allAbilities[4]   // Shadow Claw
+                allAbilities[5],  // Fireball
+                allAbilities[6],  // Lightning Bolt
+                allAbilities[7],  // Greater Heal
+                allAbilities[8]   // Shadow Claw
             };
             break;
         case 3:
             type = ClassType::Cleric;
             abilities = {
-                allAbilities[8],  // Heal
+                allAbilities[9],  // Heal
                 allAbilities[10], // Regenerate
-                allAbilities[13], // Battle Cry
-                allAbilities[16]  // Curse
+                allAbilities[11], // Battle Cry
+                allAbilities[12]  // Curse
             };
             break;
         case 4:
-        default:
             type = ClassType::Rogue;
             abilities = {
-                allAbilities[5],  // Piercing Arrow
-                allAbilities[15], // Weaken
-                allAbilities[18], // Mind Drain
-                allAbilities[19]  // Armor Break
+                allAbilities[13],  // Piercing Arrow
+                allAbilities[14], // Weaken
+                allAbilities[15], // Mind Drain
+                allAbilities[16]  // Armor Break
             };
-            break;
+        case 5:
+            type = ClassType::Druid;
+            abilities = {
+                allAbilities[17], // Nature's Grasp
+                allAbilities[18], // Thorn Whip
+                allAbilities[19], // Fortify
+                allAbilities[20], // Enrage
+            };
+        case 6:
+        default:
+            type = ClassType::Wretch;
+            abilities = {
+                allAbilities[21], //Splash
+                allAbilities[22], //Throw Rock
+                allAbilities[23], //Flail
+                allAbilities[24], //Run
+            };
+        break;
     }
 
     // Create and return a Player object
