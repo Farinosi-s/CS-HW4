@@ -2,9 +2,8 @@
 
 using namespace std;
 
-// Constructor: Initializes a Player object with given attributes and class type
-Player::Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type)
-    : Creature(name, health, maxHealth, attack, defense, abilities), type(type) {}
+Player::Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type)    //Constructor
+    : Creature(name, health, maxHealth, attack, defense, abilities), type(type) {}                                              //Members intializer list
 
 // Returns the player's class type
 ClassType Player::getClassType() const {

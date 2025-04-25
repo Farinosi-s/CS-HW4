@@ -4,14 +4,17 @@
 
 using namespace std;
 
-void Monster::takeTurn(Creature& target) {
+Monster::Monster(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities)       //Constructor
+    :Creature(name, health, maxHealth, attack, defense, abilities) {}                                                //Members Initializer List
+
+void Monster::takeTurn(Creature& target) {                                                              //Monster turn function, uses random ability selection
     if (!isAlive()) return;
     int choice = rand() % abilities.size();
     cout << "\n " << name << " uses " << abilities[choice].name << "!\n";
     useAbility(choice, target);
 }
 
-vector<Monster> Monster::getDefaultMonsters() {
+vector<Monster> Monster::getDefaultMonsters() {                                                        //Creates a vector with monster objects of the below monsters
     return {
         Monster("Displacer Beast", 60, 60, 5, 5, {
             Abilities("Blur", {{AbilityType::Buff, 5, "defense"}}),
@@ -54,8 +57,8 @@ vector<Monster> Monster::getDefaultMonsters() {
 }
 
 
-bool Monster::anyAlive(const vector<Monster>& monsters) {
-    for (const auto& m : monsters)
-        if (m.isAlive()) return true;
+bool Monster::anyAlive(const vector<Monster>& monsters) {                                            //Originally I made it so that you could fight multiple
+    for (const auto& m : monsters)                                                                   //monsters at once. Deleted that functionality, but left the bool check
+        if (m.isAlive()) return true;                                                                //that looks at the whole list of monsters in case I wanted to add it back
     return false;
 }

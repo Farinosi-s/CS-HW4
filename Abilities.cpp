@@ -4,19 +4,19 @@
 using namespace std;
 
 
-void Abilities::use(Creature& user, Creature& target) const {
-    for (const auto& e : effects) {
-        switch (e.type) {
-            case AbilityType::Damage: {
-                int userAttack = user.getAttack() * .02; 
-                int scaledDamage = static_cast<int>(e.value * (userAttack + 1)); 
+void Abilities::use(Creature& user, Creature& target) const {                                       //use function with references to the objects being effected
+    for (const auto& e : effects) {                                                                 //Loops through the different effect objects in the effects vector
+        switch (e.type) {                                                                           //Checks the effect type in a switch case, then performs based on that
+            case AbilityType::Damage: {                                                             //put the damage scaling here for attack
+                double userAttack = user.getAttack() * .02; 
+                int scaledDamage = static_cast<int>(e.value * (userAttack + 1));                    //turned the double after scaling back to an int
                 target.takeDamage(scaledDamage);
                 break;
             }
-            case AbilityType::Heal:
-                user.heal(e.value);
+            case AbilityType::Heal:                                                                 
+                user.heal(e.value);                                                                 //Heal for a value, not exceeding maxHealth handled elsewhere
                 break;  
-            case AbilityType::Buff:
+            case AbilityType::Buff:                                                                 //used a statAffected string to differentiate between the two
                 if (e.statAffected == "attack") user.increaseAttack(e.value);
                 else if (e.statAffected == "defense") user.increaseDefense(e.value);
                 break;
@@ -28,10 +28,10 @@ void Abilities::use(Creature& user, Creature& target) const {
     }
 }
 
-vector<Abilities> Abilities::getAllAbilities() {
+vector<Abilities> Abilities::getAllAbilities() {                                                                             //Ability vector, Currently just used with player
     return {
-        Abilities("Unused", {{AbilityType::Damage, 80, ""}}),       
-        Abilities("Slash", {{AbilityType::Damage, 20, ""}}),
+        Abilities("Unused", {{AbilityType::Damage, 100, ""}}),                                                               //0 -testing ability
+        Abilities("Slash", {{AbilityType::Damage, 20, ""}}),                                                                //1 and onwards
         Abilities("Rage", {{AbilityType::Buff, 5, "attack"}, {AbilityType::Buff, 5, "defense"}}),
         Abilities("Intimidating Shout", {{AbilityType::Debuff, 8, "attack"}}),
         Abilities("Rending Blow", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 6, "defense"}}),
@@ -50,6 +50,6 @@ vector<Abilities> Abilities::getAllAbilities() {
         Abilities("Nature's Bounty", {{AbilityType::Heal, 20, ""}}),
         Abilities("Thorn Whip", {{AbilityType::Damage, 10, ""}, {AbilityType::Debuff, 5, "attack"}}),
         Abilities("Shapeshift", {{AbilityType::Buff, 4, "attack"}, {AbilityType::Buff, 6, "defense"}}),
-        Abilities("Wild Strike", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "attack"}}),
+        Abilities("Wild Strike", {{AbilityType::Damage, 20, ""}, {AbilityType::Debuff, 3, "attack"}}),                      //20 (should be)
     };
 }

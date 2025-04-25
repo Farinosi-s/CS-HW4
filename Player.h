@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum class ClassType {
+enum class ClassType {                               //Enum for the different player classes
     Warrior,
     Mage,
     Cleric,
@@ -15,10 +15,10 @@ enum class ClassType {
 
 class Player : public Creature {
 private:
-    ClassType type;
+    ClassType type;                                 //unique member for player, added here instead of in the creature class
 
 public:
-    Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type);
-    void healPlayer(int amount);
-    ClassType getClassType() const;
+    Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type);           //Constructor with all the components
+    void healPlayer(int amount);                                                                                                    //heal function, seperate from abilties
+    ClassType getClassType() const;                                                                                                 //get function
 };
