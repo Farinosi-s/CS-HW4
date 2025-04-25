@@ -71,6 +71,11 @@ int main() {
 
         Battle battle(player, enemy);                                           // Calls the Battle class and passes in the player and enemy object
         battle.start();
+
+        if (enemy.getHealth() <= 0) { //Added for inventory, needs debugging
+            cout << "\nYou have defeated the " << enemy.getName() << "!\n";
+            player.addItem(enemy.getDropId());
+        }
         
         cout << "\nHow would you like to proceed?\n";                          // After battle, asks player if they want to continue or quit
         cout << "1. Press the attack, continue fighting!\n";
