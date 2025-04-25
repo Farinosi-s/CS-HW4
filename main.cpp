@@ -20,6 +20,7 @@ Written with Dacota Fabisinski-Hale.
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include "Arena.h"
 #include "Abilities.h"
 #include "Monster.h"
 #include "Player.h"
@@ -68,6 +69,12 @@ int main() {
 
         Monster enemy = chooseEnemy(enemies);                                   // Lets the player choose an enemy to fight, initializing an enemy object of monster class
         waitForEnter();
+
+        Arena arena; //Draw arena
+        arena.placePlayer(1, 1);
+        arena.placeMonster(enemy, 8, 8);
+        arena.display();
+             
 
         Battle battle(player, enemy);                                           // Calls the Battle class and passes in the player and enemy object
         battle.start();
