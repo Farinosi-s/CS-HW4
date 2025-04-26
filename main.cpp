@@ -42,7 +42,7 @@ int main() {
     delay();
     cout << "For weeks now, monsters not seen in a generation have stalked the edges of civilization— reports of eerie howls that echo through the night, \n";
     delay();
-    cout << "entire fields are found burnt to a crisp, and there are claws marks that rip through stone. The people are desperate. The Council of Elders has issued a call: \n";
+    cout << "entire fields are found burnt to a crisp, and there are claw marks that rip through stone. The people are desperate. The Council of Elders has issued a call: \n";
     delay();
     cout << "brave souls willing to hunt the nightmares will be rewarded with coin, fame… and perhaps answers...\n";
     delay();
@@ -69,12 +69,6 @@ int main() {
 
         Monster enemy = chooseEnemy(enemies);                                   // Lets the player choose an enemy to fight, initializing an enemy object of monster class
         waitForEnter();
-
-        /*Arena arena; //Draw arena
-        arena.placePlayer(1, 1);
-        arena.placeMonster(enemy, 8, 8);
-        arena.display();*/
-             
 
         Battle battle(player, enemy);                                           // Calls the Battle class and passes in the player and enemy object
         battle.start();
@@ -126,7 +120,9 @@ Monster chooseEnemy(const vector<Monster>& enemies) {                       // F
     cout << "Choose your target's number: ";
     cin >> choice;
 
-    if (choice < 1 || choice > enemies.size()) {                            //need to make it so that this is any choice that isn't a number between expected values
+    if (!(cin >> choice) || choice < 1 || choice > enemies.size()) {                            //need to make it so that this is any choice that isn't a number between expected values
+        cin.clear();              
+        cin.ignore(1000, '\n');  
         cout << "Invalid choice, picking the first enemy.\n";
         choice = 1;
     }
@@ -148,6 +144,18 @@ Player chooseClass(const string& playerName) {                              // F
     cout << "Enter the item's number: ";
 
     int choice;
+
+    while (true) {
+        cout << "Enter the item's number: ";
+        if (cin >> choice && choice >= 1 && choice <= 5) {
+            break; //Input is valid, move on to switch statements
+        } else {
+            cin.clear();              //Clear error
+            cin.ignore(1000, '\n');   //Discard invalid input
+            cout << "Invalid input. Please enter a number between 1 and 5.\n";
+        }
+    }
+    
     cin >> choice;                                      //right now, all invalid choices break the game. Might want to fix
 
     switch (choice) {
