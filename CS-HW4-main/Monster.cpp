@@ -5,7 +5,7 @@
 using namespace std;
 
 Monster::Monster(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, int dropId, string dropName)       //Constructor
-    :Creature(name, health, maxHealth, attack, defense, abilities) {}                                                //Members Initializer List
+    :Creature(name, health, maxHealth, attack, defense, abilities, itemDropId(dropId), itemDropName(dropName)) {}                                                //Members Initializer List
 
 void Monster::takeTurn(Creature& target) {                                                              //Monster turn function, uses random ability selection
     if (!isAlive()) return;
@@ -14,13 +14,13 @@ void Monster::takeTurn(Creature& target) {                                      
     useAbility(choice, target);
 }
 
-/*int Monster::getDropId() const {
+int Monster::getDropId() const {
     return itemDropId;
 }
 
 string Monster::getDropName() const {
     return itemDropName;
-}*/ //Needs debugging
+} //Needs debugging
 
 vector<Monster> Monster::getDefaultMonsters() {                                                        //Creates a vector with monster objects of the below monsters
     return {

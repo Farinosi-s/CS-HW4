@@ -11,5 +11,5 @@ public:
     static vector<Monster> getDefaultMonsters();                                                                //Vector of all the monsters
     static bool anyAlive(const vector<Monster>& monsters);                                                      //Not used, previous multi-monster functionality
     int getDropId() const;
-    std::string getDropName() const;
+    string getDropName() const;
 };
