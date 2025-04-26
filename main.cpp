@@ -20,6 +20,7 @@ Written with Dacota Fabisinski-Hale.
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <unistd.h>
 #include "Abilities.h"
 #include "Monster.h"
 #include "Player.h"
@@ -27,7 +28,7 @@ Written with Dacota Fabisinski-Hale.
 
 using namespace std;
                                                                     //function prototypes
-void pause(int ms = 4000);                                          //default pause set to 4000
+void delay(int ms = 4000);                                          //default pause set to 4000
 void waitForEnter();
 void displayEnemies(const vector<Monster>& enemies);
 Monster chooseEnemy(const vector<Monster>& enemies);
@@ -38,29 +39,29 @@ int main() {
     srand(time(0));                                                                                                         //For the random ability selection in monster
     cout << "\n";                                                                                                           //Text opener for the game
     cout << "\nThe sun sinks behind the Roshan Mountains, draping the village of Alethvar in shadows and fear...\n";
-    pause();
+    delay();
     cout << "For weeks now, monsters not seen in a generation have stalked the edges of civilization— reports of eerie howls that echo through the night, \n";
-    pause();
+    delay();
     cout << "entire fields are found burnt to a crisp, and there are claws marks that rip through stone. The people are desperate. The Council of Elders has issued a call: \n";
-    pause();
+    delay();
     cout << "brave souls willing to hunt the nightmares will be rewarded with coin, fame… and perhaps answers...\n";
-    pause();
+    delay();
     cout << "\nIn a smoky tavern lit by flickering lanterns, you rise from your seat. You are no common traveler— you are a trained adventurer, \n";
-    pause();
+    delay();
     cout << "forged by battle and bound by purpose.\n";
-    pause();
+    delay();
 
     string playerName;                                                                                                      
     cout << "\nWhat is your name, brave adventurer? ";
     getline(cin, playerName);                                                   //Gets player's Name
 
     cout << "\nWelcome, " << playerName << ". Your journey begins now...\n";
-    pause(1500);
+    delay(1500);
 
     vector<Monster> enemies = Monster::getDefaultMonsters();                    // Initializes available enemies
 
     Player player = chooseClass(playerName);                                    // Initializes player and let them choose their class
-    pause(1000);
+    delay(1000);
 
     bool continueFighting = true;                                               // Main loop for until the player chooses to fully exit
     while (continueFighting) {
@@ -103,8 +104,8 @@ int main() {
     return 0;
 }
 
-void pause(int ms) {
-    this_thread::sleep_for(chrono::milliseconds(ms));                       // Used to create tension in dramatic elements
+void delay(int ms) {
+    usleep(ms * 1000);                        // Used to create tension in dramatic elements
 }
 
 void waitForEnter() {                                                       // Alternate pausing element, creates a sense of transition
