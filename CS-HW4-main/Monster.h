@@ -4,7 +4,10 @@
 using namespace std;
 
 
-class Monster : public Creature {                                                                               //Monster Class
+class Monster : public Creature {
+private:
+    int itemDropId;
+    string itemDropName;                                                                               //Monster Class
 public:
     Monster(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, int dropId, string dropName);      //Constructor with all the components
     void takeTurn(Creature& target);                                                                            //Monster's version of take turn so it'll have random abilities
