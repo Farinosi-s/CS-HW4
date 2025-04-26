@@ -52,7 +52,8 @@ void Battle::start() {                                                          
             break;
         }
         enemyTurn();
-        waitForEnter();
+        cout << "\n";
+        
         if (ally) {                                                                             //checks if Ally has been created
             allyTurn();
         }
