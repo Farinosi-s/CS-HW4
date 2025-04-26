@@ -33,7 +33,6 @@ void displayEnemies(const vector<Monster>& enemies);
 Monster chooseEnemy(const vector<Monster>& enemies);
 Player chooseClass(const string& playerName);
 
-
 int main() {
     srand(time(0));                                                                                                         //For the random ability selection in monster
     cout << "\n";                                                                                                           //Text opener for the game
@@ -69,20 +68,11 @@ int main() {
         Monster enemy = chooseEnemy(enemies);                                   // Lets the player choose an enemy to fight, initializing an enemy object of monster class
         waitForEnter();
 
-        /*Arena arena; //Draw arena
-        arena.placePlayer(1, 1);
-        arena.placeMonster(enemy, 8, 8);
-        arena.display();*/
-             
-
         Battle battle(player, enemy);                                           // Calls the Battle class and passes in the player and enemy object
         battle.start();
+        cout << "\n ";
+        player.displayInventory();
 
-        if (enemy.getHealth() <= 0) { //Added for inventory
-            cout << "\nYou have defeated the " << enemy.getName() << "!\n";
-            player.addItem(enemy.getDropId());
-        }
-        
         cout << "\nHow would you like to proceed?\n";                          // After battle, asks player if they want to continue or quit
         cout << "1. Press the attack, continue fighting!\n";
         cout << "2. Return to camp and heal before setting out again\n";

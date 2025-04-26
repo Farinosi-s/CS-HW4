@@ -42,6 +42,7 @@ void Battle::start() {                                                          
 
         if (!enemy.isAlive()) {                                                                 //enemy dies
             cout << "\n" << enemy.getName() << " has been defeated!\n";
+            player.addItem(enemy.getDropId());
             break;
         }
 
