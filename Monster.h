@@ -7,7 +7,7 @@ using namespace std;
 
 class Monster : public Creature {  
 private:
-    string dropId;                                                                        //Monster Class
+    string dropId;                                                 //Member unique to the Monster class. It's for boss drops
 public:
     Monster(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, string dropId);      //Constructor with all the components
     void takeTurn(Creature& target);                                                                            //Monster's version of take turn so it'll have random abilities

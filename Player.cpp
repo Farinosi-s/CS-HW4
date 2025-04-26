@@ -16,8 +16,7 @@ void Player::healPlayer(int amount) {
     std::cout << getName() << " is restored after a long night's rest...\n";
 }
 
-void Player::addItem(const string& itemName) {
-    // Check if item already exists
+void Player::addItem(const string& itemName) {                                              //First part checks if item already exists
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             if (inventory[i][j].itemName == itemName) {
@@ -28,8 +27,7 @@ void Player::addItem(const string& itemName) {
         }
     }
 
-    // Otherwise, find first empty slot
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 3; ++i) {                                                           //Otherwise, it find first empty slot and puts it there
         for (int j = 0; j < 3; ++j) {
             if (inventory[i][j].itemName.empty()) {
                 inventory[i][j].itemName = itemName;
@@ -39,10 +37,10 @@ void Player::addItem(const string& itemName) {
             }
         }
     }
-    cout << "Your inventory is full! You cannot pick up " << itemName << ".\n";
+    cout << "Your inventory is full! You cannot pick up " << itemName << ".\n";             //added for later functionality with more bosses. Will be a sell mechanic
 }
 
-void Player::displayInventory() const {
+void Player::displayInventory() const {                                                     //As the name suggests, displays inventory. Called after boss kill
     cout << "\n== Inventory ==\n";
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {

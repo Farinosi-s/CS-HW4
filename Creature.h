@@ -12,7 +12,7 @@ protected:
     int maxHealth;
     int attack;
     int defense;
-    vector<Abilities> abilities;
+    vector<Abilities> abilities;            //Max a vector of the abilities class objects, becoming a class within a class
 
 public:
     Creature(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities);        //Constructor with all the components

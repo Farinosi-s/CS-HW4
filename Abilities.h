@@ -13,7 +13,7 @@ enum class AbilityType {                                            //Helped mak
 };
 
 class Effect {                                                      //Class that will be used in vectors to attach multiple objects to abilities
-public:
+public:                                                             //Our first creation of a composition class, class within a class
     AbilityType type;
     int value;
     string statAffected;

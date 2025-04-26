@@ -9,15 +9,10 @@ Creature::Creature(string name, int health, int maxHealth, int attack, int defen
     : name(name), health(health), maxHealth(maxHealth), attack(attack), defense(defense), abilities(abilities) {}       //Member initializer list
 
 string Creature::getName() const { return name; }                                                                       //All the get functions returning their stats
-
 int Creature::getHealth() const { return health; }
-
 int Creature::getMaxHealth() const { return maxHealth; }
-
 int Creature::getAttack() const { return attack; }
-
 int Creature::getDefense() const { return defense; }
-
 bool Creature::isAlive() const { return health > 0; }
 
 void Creature::takeDamage(int value) {                                                              //Taking damage function. Looks at defense and applies

@@ -56,7 +56,6 @@ vector<Monster> Monster::getDefaultMonsters() {                                 
     };
 }
 
-
 bool Monster::anyAlive(const vector<Monster>& monsters) {                                            //Originally I made it so that you could fight multiple
     for (const auto& m : monsters)                                                                   //monsters at once. Deleted that functionality, but left the bool check
         if (m.isAlive()) return true;                                                                //that looks at the whole list of monsters in case I wanted to add it back

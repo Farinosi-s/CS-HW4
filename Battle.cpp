@@ -1,11 +1,11 @@
 #include "Battle.h"
 #include <iostream>
-#include <thread>
-#include <chrono>
+#include <unistd.h>
+
 using namespace std;
 
-Battle::Battle(Player& player, Monster& enemy)                      //Constructor
-    : player(player), enemy(enemy) {}                               //Member initializer list
+Battle::Battle(Player& player, Monster& enemy, Ally* ally)                      //Constructor
+    : player(player), enemy(enemy), ally(ally){}                               //Member initializer list
 
 void Battle::waitForEnter() {                                       //Have this in the main function, pausing element to create a sense of transition
     cout << "\n(Press Enter to continue...)\n";
@@ -32,6 +32,12 @@ void Battle::enemyTurn() {
     enemy.useAbility(enemyChoice, player);
 }
 
+void Battle::allyTurn() {
+    cout << "\n" << ally->getName() << " steps in to help!\n";
+    ally->assist(player, enemy);
+    waitForEnter();
+}
+
 void Battle::start() {                                                                          //Main battle loop
     cout << "\n" << player.getName() << " encounters a " << enemy.getName() << "!\n";           //Encounter message
 
@@ -39,15 +45,17 @@ void Battle::start() {                                                          
         displayStatus();
         playerTurn();
         waitForEnter();
-
+        
         if (!enemy.isAlive()) {                                                                 //enemy dies
             cout << "\n" << enemy.getName() << " has been defeated!\n";
             player.addItem(enemy.getDropId());
             break;
         }
-
         enemyTurn();
         waitForEnter();
+        if (ally) {                                                                             //checks if Ally has been created
+            allyTurn();
+        }
 
         if (!player.isAlive()) {                                                                //player dies
             cout << "\n" << player.getName() << " has fallen... The light fades...\n";
