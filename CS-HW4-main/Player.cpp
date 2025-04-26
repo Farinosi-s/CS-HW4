@@ -3,10 +3,12 @@
 using namespace std;
 
 Player::Player(string name, int health, int maxHealth, int attack, int defense, vector<Abilities> abilities, ClassType type)    //Constructor
-    : Creature(name, health, maxHealth, attack, defense, abilities), type(type) {for (int i = 0; i < 5; ++i) {
-        inventory[i][0] = i;      // item ID
-        inventory[i][1] = 0;      // quantity
-    }}  //Members intializer list
+    : Creature(name, health, maxHealth, attack, defense, abilities), type(type) {
+        for (int i = 0; i < 5; ++i) {
+            inventory[i][0] = i;
+            inventory[i][1] = 0;
+        }
+    }                                              //Members intializer list
 
 // Returns the player's class type
 ClassType Player::getClassType() const {

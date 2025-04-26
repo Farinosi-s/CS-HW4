@@ -69,16 +69,10 @@ int main() {
         Monster enemy = chooseEnemy(enemies);                                   // Lets the player choose an enemy to fight, initializing an enemy object of monster class
         waitForEnter();
 
-        /*Arena arena; //Draw arena
-        arena.placePlayer(1, 1);
-        arena.placeMonster(enemy, 8, 8);
-        arena.display();*/
-             
-
         Battle battle(player, enemy);                                           // Calls the Battle class and passes in the player and enemy object
         battle.start();
 
-        if (enemy.getHealth() <= 0) { //Added for inventory
+        if (enemy.getHealth() <= 0) { //Added for inventory, needs debugging
             cout << "\nYou have defeated the " << enemy.getName() << "!\n";
             player.addItem(enemy.getDropId());
         }
